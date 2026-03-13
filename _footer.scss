@@ -1,11 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="32px" height="32px" viewBox="0 0 32 32" zoomAndPan="disable">
-	<style>
-		line {
-			stroke: #fff;
-			stroke-width: 1px;
-		}
-	</style>
-	<line x1="8" y1="0" x2="24" y2="16" />
-	<line x1="8" y1="32" x2="24" y2="16" />
+///
+/// Lens by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
 
-</svg>
+/* Basic */
+
+	// MSIE: Required for IEMobile.
+	/*
+		@-ms-viewport {
+			width: device-width;
+		}
+	*/
+
+	// Ensures page width is always >=320px.
+		@include breakpoint('<=xsmall') {
+			html, body {
+				min-width: 320px;
+			}
+		}
+
+	// Stops initial animations until page loads.
+		body.is-preload-0 {
+			*, *:before, *:after {
+				@include vendor('animation', 'none !important');
+				@include vendor('transition', 'none !important');
+			}
+		}
+
+	// Set box model to border-box.
+	// Based on css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
+		html {
+			box-sizing: border-box;
+		}
+
+		*, *:before, *:after {
+			box-sizing: inherit;
+		}
+
+	html, body {
+		background-color: _palette(page-bg);
+		overflow: hidden;
+	}

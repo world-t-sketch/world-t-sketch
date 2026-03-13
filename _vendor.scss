@@ -4,23 +4,24 @@
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 
-/* Footer */
+/* Icons */
 
-	#footer {
-		@include padding(2.25em, 2.25em);
+	ul.icons {
+		cursor: default;
+		list-style: none;
+		padding-left: 0;
 
-		.copyright {
-			list-style: none;
-			padding: 0;
+		li {
+			display: inline-block;
+			padding: 0 1em 0 0;
 
-			li {
-				display: inline-block;
-				font-size: 0.8em;
-				margin-left: 0.35em;
-				padding: 0;
+			&:last-child {
+				padding-right: 0;
+			}
 
-				&:first-child {
-					margin-left: 0;
+			.icon {
+				&:before {
+					font-size: 1.5rem;
 				}
 			}
 		}
