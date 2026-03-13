@@ -1,52 +1,63 @@
 ///
-/// Paradigm Shift by HTML5 UP
+/// Massively by HTML5 UP
 /// html5up.net | @ajlkn
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 
-/* Basic */
+/* Header */
 
-	// MSIE: Required for IEMobile.
-		@-ms-viewport {
-			width: device-width;
-		}
+	#header {
+		@include color-typography(invert);
+		@include vendor('align-items', 'center');
+		@include vendor('display', 'flex');
+		@include vendor('flex-direction', 'column');
+		@include vendor('justify-content', 'flex-end');
+		@include vendor('pointer-events', 'none');
+		@include vendor('user-select', 'none');
+		height: 20rem;
+		padding-bottom: (_size(padding) * 4);
+		position: relative;
+		text-align: center;
+		z-index: 2;
 
-	// MSIE: Prevents scrollbar from overlapping content.
-		body {
-			-ms-overflow-style: scrollbar;
-		}
+		.logo {
+			@include vendor('transition', (
+				'border-color #{_duration(transition)} ease-in-out',
+				'color #{_duration(transition)} ease-in-out',
+				'opacity 0.5s ease',
+				'transform 0.5s ease',
+				'visibility 0.5s'
+			));
+			@include vendor('pointer-events', 'auto');
+			border-style: solid;
+			border-color: _palette(invert, border);
+			border-width: 5px !important;
+			font-family: _font(family-heading);
+			font-size: 2.25rem;
+			font-weight: _font(weight-heading);
+			letter-spacing: 0.075em;
+			line-height: 1;
+			padding: 1rem 1.75rem;
+			text-transform: uppercase;
+			visibility: visible;
 
-	// Ensures page width is always >=320px.
-		@include breakpoint('<=xsmall') {
-			html, body {
-				min-width: 320px;
+			&:hover {
+				border-color: _palette(invert, accent) !important;
+				color: _palette(invert, accent) !important;
 			}
 		}
 
-	// Set box model to border-box.
-	// Based on css-tricks.com/inheriting-box-sizing-probably-slightly-better-best-practice
-		html {
-			box-sizing: border-box;
+		@include breakpoint('<=medium') {
+			height: 14rem;
+			padding-bottom: (_size(padding) * 2);
 		}
 
-		*, *:before, *:after {
-			box-sizing: inherit;
-		}
+		@include breakpoint('<=small') {
+			padding-bottom: (_size(padding) * 1.5);
 
-	html {
-		overflow-x: hidden;
-	}
-
-	body {
-		background: _palette(bg);
-		overflow-x: hidden;
-
-		// Stops initial animations until page loads.
-			&.is-preload {
-				*, *:before, *:after {
-					@include vendor('animation', 'none !important');
-					@include vendor('transition', 'none !important');
-				}
+			.logo {
+				font-size: 1.75rem;
+				border-width: 3px !important;
 			}
-
+		}
 	}
