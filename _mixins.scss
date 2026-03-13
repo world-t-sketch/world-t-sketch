@@ -1,46 +1,81 @@
-@import 'libs/vars';
-@import 'libs/functions';
-@import 'libs/mixins';
-@import 'libs/vendor';
-@import 'libs/breakpoints';
-@import 'fontawesome-all.min.css';
-@import url("https://fonts.googleapis.com/css?family=Roboto:400,700");
+///
+/// Paradigm Shift by HTML5 UP
+/// html5up.net | @ajlkn
+/// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+///
 
-/*
-	Lens by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+/* Table */
 
-// Breakpoints.
+	.table-wrapper {
+		-webkit-overflow-scrolling: touch;
+		overflow-x: auto;
+	}
 
-	@include breakpoints((
-		xlarge:  ( 1281px,  1680px ),
-		large:   ( 981px,   1280px ),
-		medium:  ( 737px,   980px  ),
-		small:   ( 481px,   736px  ),
-		xsmall:  ( null,    480px  )
-	));
+	table {
+		margin: 0 0 _size(element-margin) 0;
+		width: 100%;
 
-// Base.
+		tbody {
+			tr {
+				border: solid 1px _palette(border);
+				border-left: 0;
+				border-right: 0;
 
-	@import 'base/reset';
-	@import 'base/page';
-	@import 'base/typography';
+				&:nth-child(2n + 1) {
+					background-color: _palette(border-bg);
+				}
+			}
+		}
 
-// Component.
+		td {
+			padding: 0.75rem 0.75rem;
+		}
 
-	@import 'components/button';
-	@import 'components/form';
-	@import 'components/icon';
-	@import 'components/list';
-	@import 'components/actions';
-	@import 'components/icons';
+		th {
+			color: _palette(fg-bold);
+			font-size: 0.9rem;
+			font-weight: _font(weight-bold);
+			padding: 0 0.75rem 0.75rem 0.75rem;
+			text-align: left;
+		}
 
-// Layout.
+		thead {
+			border-bottom: solid 2px _palette(border);
+		}
 
-	@import 'layout/main';
-	@import 'layout/header';
-	@import 'layout/footer';
-	@import 'layout/thumbnails';
-	@import 'layout/viewer';
+		tfoot {
+			border-top: solid 2px _palette(border);
+		}
+
+		&.alt {
+			border-collapse: separate;
+
+			tbody {
+				tr {
+					td {
+						border: solid 1px _palette(border);
+						border-left-width: 0;
+						border-top-width: 0;
+
+						&:first-child {
+							border-left-width: 1px;
+						}
+					}
+
+					&:first-child {
+						td {
+							border-top-width: 1px;
+						}
+					}
+				}
+			}
+
+			thead {
+				border-bottom: 0;
+			}
+
+			tfoot {
+				border-top: 0;
+			}
+		}
+	}

@@ -1,118 +1,115 @@
 ///
-/// Lens by HTML5 UP
+/// Paradigm Shift by HTML5 UP
 /// html5up.net | @ajlkn
 /// Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 ///
 
-/* Main */
+/* Button */
 
-	#main {
-		@include vendor('transition', ('opacity #{_duration(layout)} ease', 'right #{_duration(layout)} ease', 'left #{_duration(layout)} ease', 'visibility #{_duration(layout)}'));
-		-webkit-overflow-scrolling: touch;
-		position: fixed;
-		top: 0;
-		width: _size(main);
-		height: 100%;
-		background: _palette(bg);
-		outline: 0;
-		overflow-x: hidden;
-		overflow-y: auto;
-		text-align: _misc(main-align);
-		visibility: visible;
-		z-index: _misc(z-index-base);
+	input[type="submit"],
+	input[type="reset"],
+	input[type="button"],
+	button,
+	.button {
+		@include vendor('appearance', 'none');
+		@include vendor('transition', (
+			'background-color #{_duration(transition)} ease-in-out',
+			'box-shadow #{_duration(transition)} ease-in-out',
+			'color #{_duration(transition)} ease-in-out'
+		));
+		background-color: transparent;
+		border-radius: _size(border-radius);
+		border: 0;
+		box-shadow: inset 0 0 0 2px _palette(border);
+		color: _palette(fg-bold) !important;
+		cursor: pointer;
+		display: inline-block;
+		font-family: _font(family-heading);
+		font-size: 0.6rem;
+		font-weight: _font(weight-heading-light);
+		height: (_size(element-height) * 1);
+		letter-spacing: _font(kerning-heading);
+		line-height: (_size(element-height) * 1);
+		padding: 0 2rem;
+		text-align: center;
+		text-decoration: none;
+		text-transform: uppercase;
+		white-space: nowrap;
 
-		@if _misc(main-side) == 'left' {
-			left: 0;
-		}
-		@else {
-			right: 0;
-		}
-
-		.toggle {
-			-webkit-tap-highlight-color: rgba(0,0,0,0);
-			position: absolute;
-			top: 0;
-			width: 4em;
-			height: 4em;
-			background-image: url('images/close-small-alt.svg');
-			background-repeat: no-repeat;
-			background-size: 32px 32px;
-			cursor: pointer;
-			display: none;
-			z-index: 1;
-
-			@if _misc(main-side) == 'left' {
-				background-position: calc(100% - 0.5em) 0.5em;
-				right: 0;
-			}
-			@else {
-				background-position: 0.5em 0.5em;
-				left: 0;
-			}
+		&:hover {
+			box-shadow: inset 0 0 0 2px _palette(accent-alt);
+			color: _palette(accent-alt) !important;
 		}
 
-		body.fullscreen & {
-			visibility: hidden;
-
-			@if _misc(main-side) == 'left' {
-				left: (_size(main) * -1);
-			}
-			@else {
-				right: (_size(main) * -1);
-			}
+		&:active {
+			background-color: _palette(accent-bg);
+			box-shadow: inset 0 0 0 2px _palette(accent-alt);
+			color: _palette(accent-alt) !important;
 		}
 
-		body.is-preload-1 & {
-			opacity: 0;
+		&.small {
+			font-size: 0.5rem;
+			height: _size(element-height) * 0.75;
+			line-height: _size(element-height) * 0.75;
+			padding: 0 1.25rem;
+		}
 
-			@if _misc(main-side) == 'left' {
-				left: -2em;
-			}
-			@else {
-				right: -2em;
+		&.large {
+			font-size: 0.7rem;
+			height: _size(element-height) * 1.0875;
+			line-height: _size(element-height) * 1.0875;
+			padding: 0 3.25rem;
+		}
+
+		&.wide {
+			min-width: 13rem;
+		}
+
+		&.icon {
+			&:before {
+				margin-right: 0.5rem;
 			}
 		}
 
-		@include breakpoint('<=large') {
-			width: _size(main-alt);
-
-			body.fullscreen & {
-				@if _misc(main-side) == 'left' {
-					left: (_size(main-alt) * -1);
-				}
-				@else {
-					right: (_size(main-alt) * -1);
-				}
-			}
-		}
-
-		@include breakpoint('<=medium') {
-			background: transparentize(_palette(bg), 0.075);
-
-			.toggle {
-				display: block;
-			}
-		}
-
-		@include breakpoint('<=xsmall') {
-			@include vendor('transition', ('opacity #{_duration(layout-alt)} ease', 'visibility #{_duration(layout-alt)}'));
+		&.fit {
 			width: 100%;
-			background: _palette(bg);
-			text-align: center;
+		}
 
-			body.is-preload-1 & {
-				left: auto !important;
-				right: auto !important;
+		&.disabled,
+		&:disabled {
+			@include vendor('pointer-events', 'none');
+			opacity: 0.25;
+		}
+
+		&.primary {
+			background-color: _palette(accent);
+			box-shadow: none;
+			color: _palette(fg-bold) !important;
+
+			&:hover {
+				background-color: saturate(lighten(_palette(accent), 15), 10);
 			}
 
-			body.fullscreen & {
-				left: auto !important;
-				right: auto !important;
-				opacity: 0;
+			&:active {
+				background-color: desaturate(darken(_palette(accent), 3), 10);
+			}
+		}
+
+		@include breakpoint('<=small') {
+			font-size: 0.7rem;
+			height: (_size(element-height) * 1.1);
+			line-height: (_size(element-height) * 1.1);
+
+			&.large {
+				font-size: 0.8rem;
+				height: _size(element-height) * 1.25;
+				line-height: _size(element-height) * 1.25;
 			}
 
-			.toggle {
-				display: none;
+			&.small {
+				font-size: 0.6rem;
+				height: (_size(element-height) * 1);
+				line-height: (_size(element-height) * 1);
 			}
 		}
 	}
